@@ -17,7 +17,7 @@ In this home assignment, you'll be developing a Spark script to aggregate some d
 
 | Organization Name            | repository_id            | repository_name            | repository_owner                  | num_prs                               | num_prs_merged                               | merged_at                            | is_compliant                                                                |
 |--------------------------|--------------------------|----------------------------|-----------------------------------|---------------------------------------|----------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------|
-| the first phase before '/' from field `full_name` from repositories | `raw.id` from repositories | `raw.name` from repositories | `raw.owner.login` from repositories | The number of PRs for each repository | The number of closed PRs for each repository | The last date that a PR was merge in | (`num_prs` == `num_prs_closed`) AND (`repository_owner` contains "scytale") |
+| the first phase before '/' from field `full_name` from repositories | `raw.id` from repositories | `raw.name` from repositories | `raw.owner.login` from repositories | The number of PRs for each repository | The number of Merged PRs for each repository | The last date that a PR was merge in | (`num_prs` == `num_prs_merged`) AND (`repository_owner` contains "scytale") |
 
 #### Notes
 1. Not all repositories have a PR.
