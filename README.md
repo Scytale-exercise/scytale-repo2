@@ -1,22 +1,31 @@
 # Scytale Home Assignment
 Hi there!
 
-In this home assignment you'll be developing a Spark script to aggregate some data from PRs.
+In this home assignment, you'll be developing a Spark script to aggregate some data from PRs.
 
 ### Instructions
-1. In the .zip file you'll find 3 json files:
-    1. repos.json -- A list of Github repositories.
-    1. prs-e2e.json -- A list of PRs in a repository that's called "e2e-tests".
-    1. prs-dart.json -- A list of PRs in a repository that's called "template.dart".
-1. Your task is to transform the three separate files into this table using Spark:
+#### Extract
+1. Get the all repository from Organization: Scytale-exercise (https://github.com/Scytale-exercise)
+2. For each repository in the organization, Get all pull requests.
+3. Save the data on JSON files.
+#### Transform
+**Please use Pyspark
+1. Get the JSON files (from the extract phase) .
+2. Transform the separate files into this table using Spark (Use schema).
+3. Please save the data to a parquet file.
 
 
-| repository_id            | repository_name            | repository_owner                  | num_prs                               | num_prs_closed                               | merged_at                            | is_compliant                                                                |
-|--------------------------|----------------------------|-----------------------------------|---------------------------------------|----------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------|
-| `raw.id` from repos.json | `raw.name` from repos.json | `raw.owner.login` from repos.json | The number of PRs for each repository | The number of closed PRs for each repository | The last date that a PR was merge in | (`num_prs` == `num_prs_closed`) AND (`repository_owner` contains "scytale") |
+| Organization Name            | repository_id            | repository_name            | repository_owner                  | num_prs                               | num_prs_merged                               | merged_at                            | is_compliant                                                                |
+|--------------------------|--------------------------|----------------------------|-----------------------------------|---------------------------------------|----------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------|
+| the first phase before '/' from field `full_name` from repositories | `raw.id` from repositories | `raw.name` from repositories | `raw.owner.login` from repositories | The number of PRs for each repository | The number of closed PRs for each repository | The last date that a PR was merge in | (`num_prs` == `num_prs_closed`) AND (`repository_owner` contains "scytale") |
 
 #### Notes
 1. Not all repositories have a PR.
+2. PRs merged != PRs closed
+
+### Bonus
+- Handle pagination.
+- Handle rate limits.
 
 ### What we're looking for
 - The code should work!
